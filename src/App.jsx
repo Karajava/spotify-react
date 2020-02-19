@@ -5,18 +5,21 @@ import fetcher from './app/services/fetcher';
 
 class App extends React.PureComponent {
   componentDidMount() {
-    fetcher.get('	https://api.spotify.com/v1/me/albums?limit=1')
-    .then((myJson) => {
-      console.log(myJson);
-    });
+    fetcher.get('https://api.spotify.com/v1/me/albums?limit=1')
+      .then((myJson) => {
+        console.log(myJson);
+      });
   }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Edit
+            <code>src/App.js</code>
+            and save to reload.
           </p>
           <a
             className="App-link"
