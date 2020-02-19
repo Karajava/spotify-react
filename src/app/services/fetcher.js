@@ -1,12 +1,12 @@
-const fetcher = (method, url, data, headers= {}) => new Promise((resolve, reject) => {
+const fetcher = (method, url, data, headers = {}) => new Promise((resolve, reject) => {
   const headerList = Object.assign(headers, {
     'Content-Type': 'application/json;',
-    'authorization': 'Bearer BQBeAkOcj-jYPuBqpCRtAVNFhIvi6tdY3Gpzeg-AuxQ_2mjb5wdGNL5gwPwZ7rFlKkictyqgPhyK44XLKcSMaaNP7SM-fjGUSUxxsu5jBOt8uZQSJplC3QMESQFw4DIX7Fs-8ntD9s3A4QsA6eorwG3nu7eLagANW_JEa7ZW8t6zn9X6dwoeT1ED0RdLxSMB84OJwk56MItgdF-nVSxIAeFBLDGevWzj1IDbtNIjHmRaRb5di_Tirsyxo1YqO2CPRSTwPYAgVMYM9w'
+    authorization: 'Bearer BQBeAkOcj-jYPuBqpCRtAVNFhIvi6tdY3Gpzeg-AuxQ_2mjb5wdGNL5gwPwZ7rFlKkictyqgPhyK44XLKcSMaaNP7SM-fjGUSUxxsu5jBOt8uZQSJplC3QMESQFw4DIX7Fs-8ntD9s3A4QsA6eorwG3nu7eLagANW_JEa7ZW8t6zn9X6dwoeT1ED0RdLxSMB84OJwk56MItgdF-nVSxIAeFBLDGevWzj1IDbtNIjHmRaRb5di_Tirsyxo1YqO2CPRSTwPYAgVMYM9w',
   });
 
   const config = {
     method,
-    headers: new Headers(headerList), // eslint-disable-line no-undef
+    headers: new Headers(headerList),
   };
 
   if (method === 'POST' || method === 'PUT') {
@@ -14,7 +14,7 @@ const fetcher = (method, url, data, headers= {}) => new Promise((resolve, reject
   }
 
   if (method === 'DELETE') {
-    return fetch(url, config).then( // eslint-disable-line no-undef
+    return fetch(url, config).then(
       (response) => {
         if (response.ok) {
           resolve({ headers: response.headers });
@@ -25,17 +25,17 @@ const fetcher = (method, url, data, headers= {}) => new Promise((resolve, reject
     });
   }
 
-  return fetch(url, config).then( // eslint-disable-line no-undef
+  return fetch(url, config).then(
     (response) => {
       if (response.ok) {
         response
           .json()
-          .then(respJSON => (respJSON.error
+          .then((respJSON) => (respJSON.error
             ? reject(respJSON) : resolve({ headers: response.headers, data: respJSON })));
       } else {
         response
           .json()
-          .then(respJSON => reject(respJSON));
+          .then((respJSON) => reject(respJSON));
       }
     },
   ).catch((err) => {

@@ -8,8 +8,6 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@typescript-eslint/eslint-plugin": "^2.10.0",
-    "@typescript-eslint/parser": "^2.10.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
@@ -20,14 +18,8 @@
     "css-loader": "3.4.2",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
-    "eslint": "^6.6.0",
     "eslint-config-react-app": "^5.2.0",
     "eslint-loader": "3.0.3",
-    "eslint-plugin-flowtype": "4.6.0",
-    "eslint-plugin-import": "2.20.0",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.18.0",
-    "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
@@ -44,10 +36,10 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
-    "react": "^16.12.0",
+    "react": "16.12.0",
     "react-app-polyfill": "^1.0.6",
-    "react-dev-utils": "^10.1.0",
-    "react-dom": "^16.12.0",
+    "react-dev-utils": "10.1.0",
+    "react-dom": "16.12.0",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.2",
@@ -64,10 +56,45 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "stylelint": "npx stylelint **/*.css",
+    "lint": "npx eslint src --ext .js,.jsx"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "airbnb",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true,
+      "jest": true
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "color-named": "never",
+      "color-hex-length": "long",
+      "declaration-block-single-line-max-declarations": 1,
+      "declaration-no-important": true,
+      "declaration-property-unit-whitelist": {
+        "font-size": ["em", "rem"],
+        "padding": ["px", "%"],
+        "margin": ["px", "%"]
+      },
+      "font-weight-notation": "numeric",
+      "no-descending-specificity": null,
+      "number-leading-zero": "never",
+      "shorthand-property-no-redundant-values": true,
+      "string-quotes": "single",
+      "value-no-vendor-prefix": true
+    }
   },
   "browserslist": {
     "production": [
@@ -135,5 +162,23 @@
     "presets": [
       "react-app"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint & npm run stylelint"
+    }
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^4.2.3",
+    "stylelint": "^13.2.0",
+    "stylelint-config-standard": "^20.0.0"
   }
 }
