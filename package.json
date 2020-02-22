@@ -1,5 +1,5 @@
 {
-  "name": "typescript",
+  "name": "spotify-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
@@ -47,6 +51,7 @@
     "style-loader": "1.1.3",
     "terser-webpack-plugin": "2.3.4",
     "ts-pnp": "1.1.5",
+    "typescript": "~3.7.2",
     "url-loader": "2.3.0",
     "webpack": "4.41.5",
     "webpack-dev-server": "3.10.1",
@@ -57,17 +62,26 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "stylelint": "npx stylelint **/*.css",
-    "lint": "npx eslint src --ext .js,.jsx"
+    "stylelint": "stylelint **/*.css",
+    "lint": "eslint src --ext .ts,.tsx"
   },
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends": [
+      "airbnb-typescript",
+      "airbnb/hooks",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module",
       "ecmaFeatures": {
         "jsx": true
-      }
+      },
+      "project": "./tsconfig.json"
     },
     "env": {
       "browser": true,
@@ -84,9 +98,18 @@
       "declaration-block-single-line-max-declarations": 1,
       "declaration-no-important": true,
       "declaration-property-unit-whitelist": {
-        "font-size": ["em", "rem"],
-        "padding": ["px", "%"],
-        "margin": ["px", "%"]
+        "font-size": [
+          "em",
+          "rem"
+        ],
+        "padding": [
+          "px",
+          "%"
+        ],
+        "margin": [
+          "px",
+          "%"
+        ]
       },
       "font-weight-notation": "numeric",
       "no-descending-specificity": null,
@@ -169,11 +192,12 @@
     }
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
-    "eslint": "^6.6.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "18.0.1",
+    "eslint-config-airbnb-typescript": "^7.0.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.7.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^1.7.0",
