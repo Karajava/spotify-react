@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import './scss/components.scss';
 import fetcher from './app/services/fetcher';
 
 interface Data {
@@ -42,7 +41,6 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           {responseData && responseData.explanation}
         </p>
