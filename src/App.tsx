@@ -26,9 +26,10 @@ const App: React.FC = () => {
   async function fetchData(): Promise<void> {
     try {
       const response: Response = await fetcher
-        .get('https://api.nasa.gov/planetary/apod');
+        .post('https://accounts.spotify.com/api/token', { grant_type: 'client_credentials' });
 
       setData(response.data);
+      console.log(response);
     } catch (err) {
       console.log('fetch failed', err);
     }

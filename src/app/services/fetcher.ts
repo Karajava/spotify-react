@@ -2,16 +2,16 @@
 interface Config {
   method: string;
   headers: Headers;
-  body?: string;
+  body?: any;
 }
 
 function fetcher(method: string, url: string, data?: object | null, headers: object = {}): Promise<object> {
   return new Promise((resolve, reject) => {
     const headerList = Object.assign(headers, {
-      'Content-Type': 'application/json;',
+      'Content-Type': 'application/x-www-form-urlencoded;',
+      Authorization: `Basic ${new Buffer('b47354e13979492c9dec42f451364c33' + ':' + '2c93647612a94912b5e0c97e13b82e36').toString('base64')}`, // eslint-disable-line
     });
 
-    const apiKey = 'SaFFFOLMtjkDiJuJxgmQSjEps8oLT8Wmf0i9lQxr';
     const config: Config = {
       method,
       headers: new Headers(headerList),
@@ -33,7 +33,7 @@ function fetcher(method: string, url: string, data?: object | null, headers: obj
       });
     }
 
-    return fetch(`${url}?api_key=${apiKey}`, config).then(
+    return fetch(url, config).then(
       (response) => {
         if (response.ok) {
           response
