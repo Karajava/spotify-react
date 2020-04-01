@@ -1,4 +1,3 @@
-
 interface Config {
   method: string;
   headers: Headers;
@@ -8,8 +7,7 @@ interface Config {
 function fetcher(method: string, url: string, data?: object | null, headers: object = {}): Promise<object> {
   return new Promise((resolve, reject) => {
     const headerList = Object.assign(headers, {
-      'Content-Type': 'application/x-www-form-urlencoded;',
-      Authorization: `Basic ${new Buffer('b47354e13979492c9dec42f451364c33' + ':' + '2c93647612a94912b5e0c97e13b82e36').toString('base64')}`, // eslint-disable-line
+      'Content-Type': 'application/json;',
     });
 
     const config: Config = {

@@ -1,4 +1,7 @@
-@import 'reset';
+@import 'mixin';
 @import 'variables';
-@import 'layout';
 @import 'themes';
+@import 'layout';
+@import 'reset';
+@import '/components/playlist';
+
