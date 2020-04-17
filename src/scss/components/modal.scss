@@ -1,0 +1,25 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(1, 1, 1, .7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.open {
+    display: flex;
+  }
+
+  &.close {
+    display: none;
+  }
+
+  .modal-box {
+    background: $darkWhite;
+    width: 60%;
+    height: 40%;
+  }
+}

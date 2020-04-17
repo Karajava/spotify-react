@@ -1,8 +1,7 @@
-
 interface Config {
   method: string;
   headers: Headers;
-  body?: string;
+  body?: any;
 }
 
 function fetcher(method: string, url: string, data?: object | null, headers: object = {}): Promise<object> {
@@ -11,7 +10,6 @@ function fetcher(method: string, url: string, data?: object | null, headers: obj
       'Content-Type': 'application/json;',
     });
 
-    const apiKey = 'SaFFFOLMtjkDiJuJxgmQSjEps8oLT8Wmf0i9lQxr';
     const config: Config = {
       method,
       headers: new Headers(headerList),
@@ -33,7 +31,7 @@ function fetcher(method: string, url: string, data?: object | null, headers: obj
       });
     }
 
-    return fetch(`${url}?api_key=${apiKey}`, config).then(
+    return fetch(url, config).then(
       (response) => {
         if (response.ok) {
           response
